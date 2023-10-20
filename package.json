@@ -1,0 +1,50 @@
+{
+  "name": "react-easing-scroll",
+  "version": "1.0.0",
+  "private": false,
+  "description": "🚀 React component that eliminates the need for jQuery easing, providing seamless and smooth scroll animations with 30+ Ease functions 🌟 for in-page navigation links⚡",
+  "main": "dist/useEasingScroll.js",
+  "types": "dist/index.d.ts",
+  "type": "module",
+  "scripts": {
+    "build": "rollup -c",
+    "wb_build": "webpack --config webpack.config.cjs --mode production",
+    "start": "rollup -c -w"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ArmaanLeg3nd/react-easing-scroll"
+  },
+  "keywords": [
+    "react",
+    "scroll",
+    "effects",
+    "easing",
+    "easing-effects",
+    "animation",
+    "component"
+  ],
+  "author": "Armaan Batra",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ArmaanLeg3nd/react-easing-scroll/issues"
+  },
+  "homepage": "https://github.com/ArmaanLeg3nd/react-easing-scroll#readme",
+  "devDependencies": {
+    "@rollup/plugin-alias": "^5.0.1",
+    "@types/prop-types": "^15.7.9",
+    "rollup": "^4.1.4",
+    "rollup-plugin-typescript2": "^0.36.0",
+    "ts-loader": "^9.5.0",
+    "typescript": "^5.2.2",
+    "webpack": "^5.89.0",
+    "webpack-cli": "^5.1.4"
+  },
+  "peerDependencies": {
+    "react": ">=15.0.0",
+    "react-dom": ">=15.0.0"
+  },
+  "files": [
+    "dist"
+  ]
+}
