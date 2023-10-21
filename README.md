@@ -38,9 +38,9 @@ $ yarn start
 Checkout the Live examples
 
 
-> [Basic]()
+> [Basic](https://codesandbox.io/s/react-easing-scroll-example-c287tr?file=/src/App.js)
 
-> [Code]()
+> [Code](https://github.com/ArmaanLeg3nd/react-easing-scroll/tree/main/examples/src/App.js)
 
 <br>
 
@@ -168,6 +168,7 @@ Overshoot controller - In the easeInBack, easeOutBack and easeInOutBack easings,
 </tr>
 </table>
 <br>
+
 ### Full example
 
 ```js
@@ -285,7 +286,7 @@ easeInOutBounce
 	- Starts with zero initial and final speeds, with bouncy motion at the start and end.
 ```
 
-A good reference for all the easings can be found at [easings.net](http://easings.net/)
+All the easing effects except linear can be found at [easings.net](http://easings.net/)
 
 <!-- #### Changelog
 - [See the CHANGELOG](./CHANGELOG.md) -->
