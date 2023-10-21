@@ -226,7 +226,7 @@ function step(
     startScroll,
     offsetTop - startScroll,
     animationDuration,
-    OvershootAmount || 0 // Provide a default value for OvershootAmount
+    OvershootAmount || 1.70158 // Provide a default value for OvershootAmount
   );
 
   window.scroll(0, scrollPosition);
