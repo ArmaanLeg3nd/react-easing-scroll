@@ -1,6 +1,6 @@
 {
   "name": "react-easing-scroll",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "private": false,
   "description": "🚀 React component that eliminates the need for jQuery easing, providing seamless and smooth scroll animations with 30+ Ease functions 🌟 for in-page navigation links⚡",
   "main": "dist/useEasingScroll.js",
