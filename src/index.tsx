@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect } from "react";
 
 type EasingFunction = (
   t: number,
@@ -206,18 +206,18 @@ function easeInOutBounce(t: number, b: number, c: number, d: number): number {
   return easeOutBounce(t * 2 - d, 0, c, d) * 0.5 + c * 0.5 + b;
 }
 
-function easeSmooth(t: number, b: number, c: number, d: number): number {
+function linear(t: number, b: number, c: number, d: number): number {
   return c * (t / d) + b;
 }
 
 function step(
   timestamp: number,
   start: number | undefined,
-  startScroll: number, // Added missing parameter
+  startScroll: number,
   offsetTop: number,
   animationDuration: number,
   easingFunction: EasingFunction,
-  OvershootAmount: number | undefined // Changed type to match the function signature
+  OvershootAmount: number | undefined
 ) {
   if (start === undefined) start = timestamp;
   const progress = timestamp - start;
@@ -226,7 +226,7 @@ function step(
     startScroll,
     offsetTop - startScroll,
     animationDuration,
-    OvershootAmount || 1.70158 // Provide a default value for OvershootAmount
+    OvershootAmount || 1.70158 // Provided a default value for OvershootAmount
   );
 
   window.scroll(0, scrollPosition);
@@ -254,42 +254,48 @@ function useEasingScroll(
   className: string,
   OvershootAmount?: number
 ) {
-    useEffect(() => {
-      const scroll = (e: Event) => {
-        e.preventDefault();
-        const target = e.target as HTMLAnchorElement;
-        const targetId = target.getAttribute("href");
-        if (targetId) {
-          const targetElement = document.getElementById(targetId.substring(1));
+  useEffect(() => {
+    const scroll = (e: Event) => {
+      e.preventDefault();
+      const target = e.target as HTMLAnchorElement;
+      const targetId = target.getAttribute("href");
+      if (targetId) {
+        const targetElement = document.getElementById(targetId.substring(1));
 
-          if (targetElement) {
-            const startScroll = window.scrollY;
-            const offsetTop =
-              targetElement.getBoundingClientRect().top + startScroll;
-            // Use the provided duration, or a default value if not provided
-            const animationDuration = duration;
-
-            // Choose the easing function based on the provided name, or use easeInOutExpo as a default
-            const easingFunction = getEasingFunction(easingFunctionName);
-
-            let start: number | undefined;
-            requestAnimationFrame((ts) => step(ts, start, startScroll, offsetTop, animationDuration, easingFunction, OvershootAmount));
-          }
+        if (targetElement) {
+          const startScroll = window.scrollY;
+          const offsetTop =
+            targetElement.getBoundingClientRect().top + startScroll;
+          const animationDuration = duration;
+          const easingFunction = getEasingFunction(easingFunctionName);
+          let start: number | undefined;
+          requestAnimationFrame((ts) =>
+            step(
+              ts,
+              start,
+              startScroll,
+              offsetTop,
+              animationDuration,
+              easingFunction,
+              OvershootAmount
+            )
+          );
         }
-      };
+      }
+    };
 
-      const links = document.querySelectorAll(`a.${className}`);
+    const links = document.querySelectorAll(`a.${className}`);
 
+    links.forEach((link) => {
+      link.addEventListener("click", scroll);
+    });
+
+    return () => {
       links.forEach((link) => {
-        link.addEventListener("click", scroll);
+        link.removeEventListener("click", scroll);
       });
-
-      return () => {
-        links.forEach((link) => {
-          link.removeEventListener("click", scroll);
-        });
-      };
-    }, [easingFunctionName, duration, className]);
+    };
+  }, [easingFunctionName, duration, className]);
 }
 
 // Function to get the easing function based on the name
@@ -325,7 +331,7 @@ function getEasingFunction(easingFunctionName: string): EasingFunction {
     easeInBounce,
     easeOutBounce,
     easeInOutBounce,
-    easeSmooth,
+    linear,
   };
 
   const selectedEasingFunction = easingFunctions[easingFunctionName];
