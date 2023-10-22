@@ -1,6 +1,15 @@
 <h1 align='center'>React Easing Scroll</h1>
 
-<p align='center'>Custom React hook for seamless scroll animations with over 30 animations for fragment-identifier based navigation
+<div align='center'>
+
+![npm](https://img.shields.io/npm/v/react-easing-scroll?style=for-the-badge&logo=npm&logoColor=red&labelColor=black) 
+![npm](https://img.shields.io/npm/dt/react-easing-scroll?style=for-the-badge&logo=npm&logoColor=black&labelColor=white&color=black)
+![NPM](https://img.shields.io/npm/l/react-easing-scroll?style=for-the-badge&logo=npm&logoColor=white&labelColor=red&color=white)
+
+
+</div>
+<p align='center'>
+	Custom React hook for seamless scroll animations with over 30 animations for fragment-identifier based navigation
 
 ### Install
 
