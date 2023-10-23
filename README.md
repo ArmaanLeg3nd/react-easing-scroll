@@ -4,6 +4,7 @@
 
 ![npm](https://img.shields.io/npm/v/react-easing-scroll?style=for-the-badge&logo=npm&logoColor=red&labelColor=black) 
 ![npm](https://img.shields.io/npm/dt/react-easing-scroll?style=for-the-badge&logo=npm&logoColor=black&labelColor=white&color=black)
+[![Package quality](https://packagequality.com/shield/react-easing-scroll.svg?style=for-the-badge)](https://packagequality.com/#?package=react-easing-scroll)
 ![NPM](https://img.shields.io/npm/l/react-easing-scroll?style=for-the-badge&logo=npm&logoColor=white&labelColor=red&color=white)
 
 
