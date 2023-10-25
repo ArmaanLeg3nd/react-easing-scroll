@@ -10,8 +10,9 @@
 
 </div>
 <p align='center'>
-	Custom React hook for seamless scroll animations with over 30 animations for fragment-identifier based navigation
-
+	Custom React hook for seamless scroll animations with over 30 animations for fragment-identifier based navigation<br>
+	Check it out on the NPM website: <a href="https://www.npmjs.com/package/react-easing-scroll">react-easing-scroll</a>
+	
 ### Install
 
 ```js
