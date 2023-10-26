@@ -255,6 +255,8 @@ function useEasingScroll(
   OvershootAmount?: number
 ) {
   useEffect(() => {
+    const currentScrollBehavior = document.documentElement.computedStyleMap().get('scroll-behavior').toString();
+    document.documentElement.style.setProperty('scroll-behavior', 'auto', 'important');
     const scroll = (e: Event) => {
       e.preventDefault();
       const target = e.target as HTMLAnchorElement;
@@ -291,6 +293,7 @@ function useEasingScroll(
     });
 
     return () => {
+      document.documentElement.style.setProperty('scroll-behavior', currentScrollBehavior);
       links.forEach((link) => {
         link.removeEventListener("click", scroll);
       });
