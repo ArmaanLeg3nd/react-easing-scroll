@@ -51,7 +51,9 @@ function easeInCirc(t: number, b: number, c: number, d: number): number {
 }
 
 function easeOutCirc(t: number, b: number, c: number, d: number): number {
-  return c * Math.sqrt(1 - (t = t / d - 1) * t) + b;
+  t /= d;
+  t--;
+  return c * Math.sqrt(1 - Math.pow(t, 2)) + b;
 }
 
 function easeInOutCirc(t: number, b: number, c: number, d: number): number {
@@ -255,6 +257,14 @@ function useEasingScroll(
   OvershootAmount?: number
 ) {
   useEffect(() => {
+    // Check for the existence of computedStyleMap
+    if (!document.documentElement.computedStyleMap) {
+      console.error(
+        "The 'computedStyleMap' is not supported in this environment. Ensure that your testing environment supports it."
+      );
+      return;
+    }
+
     const currentScrollBehavior = document.documentElement.computedStyleMap().get('scroll-behavior').toString();
     document.documentElement.style.setProperty('scroll-behavior', 'auto', 'important');
     const scroll = (e: Event) => {
@@ -286,24 +296,33 @@ function useEasingScroll(
       }
     };
 
-    const links = document.querySelectorAll(`a.${className}`);
-
-    links.forEach((link) => {
-      link.addEventListener("click", scroll);
-    });
+    setupEventListeners(className, scroll);
 
     return () => {
       document.documentElement.style.setProperty('scroll-behavior', currentScrollBehavior);
-      links.forEach((link) => {
-        link.removeEventListener("click", scroll);
-      });
+      cleanupEventListeners(className, scroll);
     };
   }, [easingFunctionName, duration, className]);
 }
 
+function setupEventListeners(className: string, scroll: (e: Event) => void) {
+  const links = document.querySelectorAll(`a.${className}`);
+
+  links.forEach((link) => {
+    link.addEventListener("click", scroll);
+  });
+}
+
+function cleanupEventListeners(className: string, scroll: (e: Event) => void) {
+  const links = document.querySelectorAll(`a.${className}`);
+  links.forEach((link) => {
+    link.removeEventListener("click", scroll);
+  });
+}
+
 // Function to get the easing function based on the name
 function getEasingFunction(easingFunctionName: string): EasingFunction {
-  const easingFunctions: Record<string, EasingFunction> = {
+  const eFunctions: Record<string, EasingFunction> = {
     easeInSine,
     easeOutSine,
     easeInOutSine,
@@ -337,7 +356,7 @@ function getEasingFunction(easingFunctionName: string): EasingFunction {
     linear,
   };
 
-  const selectedEasingFunction = easingFunctions[easingFunctionName];
+  const selectedEasingFunction = eFunctions[easingFunctionName];
 
   if (!selectedEasingFunction) {
     throw new Error(
@@ -347,5 +366,41 @@ function getEasingFunction(easingFunctionName: string): EasingFunction {
 
   return selectedEasingFunction;
 }
+
+export const easingFunctions = {
+  easeInSine,
+  easeOutSine,
+  easeInOutSine,
+  easeInCubic,
+  easeOutCubic,
+  easeInOutCubic,
+  easeInQuint,
+  easeOutQuint,
+  easeInOutQuint,
+  easeInCirc,
+  easeOutCirc,
+  easeInOutCirc,
+  easeInElastic,
+  easeOutElastic,
+  easeInOutElastic,
+  easeInQuad,
+  easeOutQuad,
+  easeInOutQuad,
+  easeInQuart,
+  easeOutQuart,
+  easeInOutQuart,
+  easeInExpo,
+  easeOutExpo,
+  easeInOutExpo,
+  easeInBack,
+  easeOutBack,
+  easeInOutBack,
+  easeInBounce,
+  easeOutBounce,
+  easeInOutBounce,
+  linear,
+};
+
+export {step, getEasingFunction, setupEventListeners, cleanupEventListeners};
 
 export default useEasingScroll;
