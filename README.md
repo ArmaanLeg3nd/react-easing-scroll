@@ -75,22 +75,22 @@ function App(){
     through the default fragment identifier navigation using <a> tag, because of
     the className "easeScrollMe" that is passed to useEasingScroll as a parameter*/}
 
-    <a href="#target3" className="easeScrollMe"><button>TRES</button></a>
+    <a href="#target3" className="easeScrollMe">TRES</a>
 
-    <a href="#target2" className="easeScrollMe"><button>DUO</button></a>
+    <a href="#target2" className="easeScrollMe">DUO</a>
 
-    <a href="#target1" className="easeScrollMe"><button>UNUS</button></a>
+    <a href="#target1" className="easeScrollMe">UNUS</a>
 
     {/* Hyperlinks that DON'T scroll towards their target element and instead 
     navigate using the default fragment identifier navigation using <a> tag,
     because of the absence of the className "easeScrollMe" that is passed to 
     useEasingScroll as a parameter */}
 
-    <a href="#target3"><button>TRES</button></a>
+    <a href="#target3">TRES</a>
 
-    <a href="#target2"><button>DUO</button></a>
+    <a href="#target2">DUO</a>
 
-    <a href="#target1"><button>UNUS</button></a>
+    <a href="#target1">UNUS</a>
 
     {/* Sections that act as scroll targets */}
     <section id="target1">
